@@ -24,13 +24,23 @@
   font-size: 4rem;
 }
 
+.description {
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  .title {
+    font-size: 20px;
+  }
+  .description {
+    font-size: 14px;
+  }
+}
+
 .title,
 .description {
   text-align: center;
 }
 
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
 
