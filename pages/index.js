@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/home.module.css'
+import styles from '../styles/Home.module.css'
 import { useScripts } from '../hooks/useScripts'
 import Wow from '../scripts/wow'
 
