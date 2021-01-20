@@ -25,18 +25,17 @@ export default function Home() {
           <canvas width={width} height={height} id="wow"></canvas>
           <h1 className={styles.title}>Welcome to Sleeping Forest!</h1>
           <p className={styles.description}>Линча сейчас работает над сайтом.</p>
-
-          <p className={styles.footer}>Жду от Вовы мокапы. ❤️</p>
         </div>
 
-        <div className={styles.container} style={{backgroundColor: '#B7C39B'}}>Home</div>
+        <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>Home</div>
 
-        <div className={styles.container} style={{backgroundColor: '#37749A'}} >About</div>
+        <div className={styles.container} style={{ backgroundColor: '#37749A' }} >About</div>
 
-        <div className={styles.container} style={{backgroundColor: '#815EB6'}}>Covers</div>
-
+        <div className={styles.container} style={{ backgroundColor: '#815EB6' }}>Covers</div>
 
       </HorizontalScroll>
+
+      <div className={styles.footer}>Дождалась от Вовы мокапы. ❤️</div>
     </div>
   )
 }

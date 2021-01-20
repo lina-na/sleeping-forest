@@ -17,6 +17,7 @@
   align-items: center;
   position: absolute;
   bottom: 0;
+  background-color: #080808;
 }
 
 
@@ -48,5 +49,4 @@
   display: flex;
   flex-direction: row;
   width: fit-content;
-
 }
