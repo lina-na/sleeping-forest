@@ -29,7 +29,12 @@ export default function Home() {
           <p className={styles.footer}>Жду от Вовы мокапы. ❤️</p>
         </div>
 
-        <div className={styles.container}>Kek</div>
+        <div className={styles.container} style={{backgroundColor: '#B7C39B'}}>Home</div>
+
+        <div className={styles.container} style={{backgroundColor: '#37749A'}} >About</div>
+
+        <div className={styles.container} style={{backgroundColor: '#815EB6'}}>Covers</div>
+
 
       </HorizontalScroll>
     </div>
