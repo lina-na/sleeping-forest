@@ -72,8 +72,8 @@ export default function About() {
   return (
     <div>
       <div className="section">
-        {shuffledArray.map(({ type, size, name, backgroundImage }, index) => 
-          <div style={size && { width: size, height: size }} key={index} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
+        {shuffledArray.map(({ type, size, name, backgroundImage }, index) =>
+          <div style={size && { width: size, height: size }} key={type + index + name || size} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
             {name && <h4>{name}</h4>}
             {backgroundImage && <img src={backgroundImage} alt={name} />}
           </div>)}
