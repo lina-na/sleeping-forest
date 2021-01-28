@@ -1,9 +1,10 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/home.module.scss'
 import { useScripts } from '../hooks/useScripts'
 import Wow from '../scripts/wow'
 import { useEffect } from 'react'
 import HorizontalScroll from '../components/horizontal-scroll'
+import About from '../components/about'
 
 
 export default function Home() {
@@ -29,7 +30,7 @@ export default function Home() {
 
         <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>Home</div>
 
-        <div className={styles.container} style={{ backgroundColor: '#37749A' }} >About</div>
+        <div className={styles.container} style={{ backgroundColor: '#37749A' }}><About /></div>
 
         <div className={styles.container} style={{ backgroundColor: '#815EB6' }}>Covers</div>
 
