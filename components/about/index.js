@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 const TYPE_PARTICLE = 'TYPE_PARTICLE';
 const TYPE_IMAGE = 'TYPE_IMAGE';
 
@@ -66,18 +67,16 @@ export default function About() {
     return array;
   }
 
-  const shuffledArray = shuffleArray([...particles, ...cards]);
+  const shuffledArray = useMemo(() => shuffleArray([...particles, ...cards]), []);
 
   return (
     <div>
       <div className="section">
-        {shuffledArray.map(({ type, size, name, backgroundImage }, index) => {
-          if (type === TYPE_PARTICLE) return <div className="particle img" style={{ width: size, height: size }} key={index}></div>
-          if (type === TYPE_IMAGE) return <div key={name} className="img">
-            <h4>{name}</h4>
-            <img src={backgroundImage} alt="" />
-          </div>
-        })}
+        {shuffledArray.map(({ type, size, name, backgroundImage }, index) => 
+          <div style={size && { width: size, height: size }} key={index} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
+            {name && <h4>{name}</h4>}
+            {backgroundImage && <img src={backgroundImage} alt={name} />}
+          </div>)}
       </div>
     </div>
   )
