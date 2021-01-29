@@ -5,6 +5,7 @@ import Wow from '../scripts/wow'
 import { useEffect } from 'react'
 import HorizontalScroll from '../components/horizontal-scroll'
 import About from '../components/about'
+import Covers from '../components/covers'
 
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
 
         <div className={styles.container} style={{ backgroundColor: '#37749A' }}><About /></div>
 
-        <div className={styles.container} style={{ backgroundColor: '#815EB6' }}>Covers</div>
+        <div className={styles.container} style={{ backgroundColor: '#815EB6' }}><Covers /></div>
 
       </HorizontalScroll>
 
