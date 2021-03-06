@@ -1,6 +1,7 @@
 import s from 'styled-components';
 import Selectors from './carousel';
 import Preview from '../preview';
+import { useState } from 'react';
 
 const LeftBarWrapper = s.div`
   position: absolute;
@@ -24,9 +25,8 @@ const LeftBar = s.div`
   padding: 90px;
 `;
 
-const NewRelease = s.img`
-  max-height: 80px;
-  margin-bottom: 50px;
+const G = s.span`
+  color: #9ccb3b;
 `;
 
 const Boosty = s.img`
@@ -45,7 +45,8 @@ const SubGlass = s.div`
 `;
 
 const Background = s.div`
-  background-image: url("bg.png");
+  transition: background-image 0.5s ease-in-out;
+  background-image: url("${(p) => p.bg}");
   width: 100%;
   height: 100%;
   position: absolute;
@@ -56,13 +57,13 @@ const PreviewsWrapper = s.div`
   display: flex; 
   flex-direction: row; 
   bottom: 100px;
-  left: 60%;
+  left: 50%;
 `;
 
 const items = [{
   content: (
     <div>
-      <NewRelease alt="new-release" src="new-release.png" />
+      <h1><G>N</G>ew <G>R</G>elease</h1>
       <p>
         Привет, ребята!
         Спешим рассказать вам, что новый релиз, который выйдет в эту субботу, уже доступен на нашем бусти.
@@ -72,14 +73,13 @@ const items = [{
       </a>
     </div>
   ),
+  background: 'bg.png'
 }, {
-  content: (<p>Привет, ребята! Спешим рассказать вам еще что-нибудь.</p>),
+  content: (<p>Йо Вова соска.</p>),
+  background: 'BG_01.jpg'
 }, {
-  content: (<p>И еще что-нибудь.</p>)
-}, {
-  content: (<p> Воспользуюсь моментом и передам привет жене.</p>)
-}, {
-  content: (<p>Кто тут у нас такой любопытный?</p>)
+  content: (<p> Воспользуюсь моментом и передам привет жене.</p>),
+  background: 'BG_02.jpg'
 }]
 
 const previews = [{
@@ -111,11 +111,17 @@ const previews = [{
 
 
 export default function Home() {
+  const [active, setActive] = useState(0);
+
+
+  const handleActiveChange = (value) => {
+    setActive(value);
+  }
 
   return (
-    <Background>
+    <Background bg={items[active].background}>
       <LeftBar>
-        <Selectors items={items} />
+        <Selectors active={active} handleActiveChange={handleActiveChange} items={items} />
       </LeftBar>
       <LeftBarWrapper>
         <SubGlass />
