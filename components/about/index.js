@@ -54,44 +54,44 @@ export default function About() {
   })();
 
   const cards = [{
-    backgroundImage: '/vocalists/XzA2MTA4NjEuanBn.jpg',
-    name: 'Вася',
+    backgroundImage: '/vocalists/adelinara.jpg',
+    name: 'Adelinara',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzA5MTkxMTAuanBn.jpg',
-    name: 'Ира',
+    backgroundImage: '/vocalists/bilbybu.jpg',
+    name: 'Bilbybu',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzA5MzA1MjkuanBn.jpg',
-    name: 'Вова',
+    backgroundImage: '/vocalists/vova.jpg',
+    name: 'GautiSuede',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAwMjEwNzguanBn.jpg',
-    name: 'Жена',
+    backgroundImage: '/vocalists/zephyris.jpg',
+    name: 'niZephyris',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAwMjg5MjUuanBn.jpg',
-    name: 'Пельмешек',
+    backgroundImage: '/vocalists/oliver.jpg',
+    name: 'ComedyCrub',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAwNTUyMTkuanBn.jpg',
-    name: 'Олег',
+    backgroundImage: '/vocalists/mapcuk.jpg',
+    name: 'Mapcuk',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAxMTU0NTMuanBn.jpg',
-    name: 'Вероника',
+    backgroundImage: '/vocalists/kuplinov.jpg',
+    name: 'Kuplinov Play',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAxOTE2ODkuanBn.jpg',
-    name: 'Шанана',
+    backgroundImage: '/vocalists/guzeeva.jpg',
+    name: 'Larisa Guzeeva',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAyMDU4MDYuanBn.jpg',
-    name: 'Веселый огурец',
+    backgroundImage: '/vocalists/kris.jpg',
+    name: 'Rivamoon',
     type: TYPE_IMAGE,
   }, {
-    backgroundImage: '/vocalists/XzAzNzM1NjUuanBn.jpg',
-    name: 'Филипп Киркоров',
+    backgroundImage: '/vocalists/shana.jpg',
+    name: 'Shana',
     type: TYPE_IMAGE,
   }]
 
