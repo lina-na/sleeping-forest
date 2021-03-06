@@ -57,7 +57,7 @@ const PreviewsWrapper = s.div`
   display: flex; 
   flex-direction: row; 
   bottom: 100px;
-  left: 50%;
+  right: -610px;
 `;
 
 const items = [{
