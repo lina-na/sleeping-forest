@@ -1,5 +1,6 @@
 import s from 'styled-components';
 import Selectors from './carousel';
+import Preview from '../preview';
 
 const LeftBarWrapper = s.div`
   position: absolute;
@@ -50,6 +51,14 @@ const Background = s.div`
   position: absolute;
 `
 
+const PreviewsWrapper = s.div`
+  position: absolute; 
+  display: flex; 
+  flex-direction: row; 
+  bottom: 100px;
+  left: 60%;
+`;
+
 const items = [{
   content: (
     <div>
@@ -73,6 +82,33 @@ const items = [{
   content: (<p>Кто тут у нас такой любопытный?</p>)
 }]
 
+const previews = [{
+  src: '/previews/1.jpg',
+  title: 'My Own Hero',
+  singer: 'KorraRous',
+  link: '',
+}, {
+  src: '/previews/2.jpg',
+  title: 'For Your Sake',
+  singer: 'HayashiKi',
+  link: '',
+}, {
+  src: '/previews/3.jpg',
+  title: 'Monster vs. Angel',
+  singer: 'Mapcuk',
+  link: '',
+}, {
+  src: '/previews/4.jpg',
+  title: 'Funny Little Frog',
+  singer: 'Adelinara',
+  link: '',
+}, {
+  src: '/previews/5.jpg',
+  title: 'I’m bad too (Feat. DPR LIVE)',
+  singer: 'Ss_ViWi_sS',
+  link: '',
+}]
+
 
 export default function Home() {
 
@@ -84,6 +120,12 @@ export default function Home() {
       <LeftBarWrapper>
         <SubGlass />
       </LeftBarWrapper>
+
+      <PreviewsWrapper>
+        {previews.map((item, index) =>
+          <Preview key={index} item={item} index={index} />
+        )}
+      </PreviewsWrapper>
     </Background>
   )
 }
