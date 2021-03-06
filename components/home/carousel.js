@@ -1,5 +1,6 @@
 import s, { css, keyframes } from 'styled-components';
 import useInterval from '../../hooks/useInterval';
+import { useState } from 'react';
 
 const SelectorsWrapper = s.div`
   position: absolute;
@@ -80,10 +81,10 @@ const fadeOut = keyframes`
 `;
 
 
-const Selectors = ({ items, active, handleActiveChange }) => {
+const Selectors = ({ items, active, handleActiveChange, setDelay }) => {
   const handleClick = (index) => {
     if (index !== active) handleActiveChange(index);
-
+    setDelay({ value: 10000 })
   }
 
   return (
@@ -105,10 +106,11 @@ const Selectors = ({ items, active, handleActiveChange }) => {
 
 
 export default function Slider({ items, active, handleActiveChange }) {
+  const [delay, setDelay] = useState({ value: 10000 })
 
   useInterval(() => {
     handleActiveChange(((active + 1) % items.length + items.length) % items.length);
-  }, 10000);
+  }, delay);
 
 
   return (
@@ -117,6 +119,7 @@ export default function Slider({ items, active, handleActiveChange }) {
         items={items}
         active={active}
         handleActiveChange={handleActiveChange}
+        setDelay={setDelay}
       />
       {items.map((item, index) => {
         if (index === active) return <Content active>{item.content}</Content>;
