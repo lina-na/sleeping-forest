@@ -53,17 +53,17 @@ export default function Layout() {
         <img src="/logo.png" alt="logo" width="320" height="200" style={{ zIndex: 2, pointerEvents: 'none' }} />
       </div>
 
-      <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>
+      <div className={styles.container}>
         <Home />
         <FooterBackground />
       </div>
 
-      <div className={styles.container} style={{ backgroundColor: '#37749A' }}>
+      <div className={styles.container}>
         <About />
         <FooterBackground />
       </div>
 
-      <div className={styles.container} style={{ backgroundColor: '#815EB6' }}>
+      <div className={styles.container}>
         <Covers />
         <FooterBackground />
       </div>
