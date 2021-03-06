@@ -6,7 +6,16 @@ import { useEffect } from 'react'
 import HorizontalScroll from '../components/horizontal-scroll'
 import About from '../components/about'
 import Covers from '../components/covers'
+import Image from 'next/image'
+import s from 'styled-components';
 
+const FooterBackground = s.div`
+  width: 100vw;
+  height: 100px;
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+`
 
 export default function Home() {
   useScripts([Wow])
@@ -25,15 +34,23 @@ export default function Home() {
       <HorizontalScroll>
         <div className={styles.container}>
           <canvas width={width} height={height} id="wow"></canvas>
-          <h1 className={styles.title}>Welcome to Sleeping Forest!</h1>
-          <p className={styles.description}>Линча сейчас работает над сайтом.</p>
+          <Image src="/logo.png" alt="logo" width="320" height="200" />
         </div>
 
-        <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>Home</div>
+        <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>
+          Home
+          <FooterBackground  />
+        </div>
 
-        <div className={styles.container} style={{ backgroundColor: '#37749A' }}><About /></div>
+        <div className={styles.container} style={{ backgroundColor: '#37749A' }}>
+          <About />
+          <FooterBackground  />
+        </div>
 
-        <div className={styles.container} style={{ backgroundColor: '#815EB6' }}><Covers /></div>
+        <div className={styles.container} style={{ backgroundColor: '#815EB6' }}>
+          <Covers />
+          <FooterBackground  />
+        </div>
 
       </HorizontalScroll>
 
