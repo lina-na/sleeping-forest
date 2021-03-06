@@ -7,7 +7,7 @@ const SelectorsWrapper = s.div`
   top: 0;
   left: 0;
   width: 70px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

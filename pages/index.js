@@ -7,7 +7,6 @@ import HorizontalScroll from '../components/horizontal-scroll'
 import About from '../components/about'
 import Covers from '../components/covers'
 import Home from '../components/home'
-import Image from 'next/image'
 import s from 'styled-components';
 
 const FooterBackground = s.div`
@@ -35,7 +34,7 @@ export default function Layout() {
       <HorizontalScroll>
         <div className={styles.container}>
           <canvas width={width} height={height} id="wow"></canvas>
-          <Image src="/logo.png" alt="logo" width="320" height="200" />
+          <img src="/logo.png" alt="logo" width="320" height="200" style={{ zIndex: 2 }} />
         </div>
 
         <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>
