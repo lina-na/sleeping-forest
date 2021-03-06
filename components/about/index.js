@@ -21,6 +21,7 @@ const Button = s.button`
   background-color: #9ccb3b;
   text-transform: uppercase;
   transition: background-color .3s;
+  margin-bottom: 50px;
 
   :hover {
     background-color: #66920b;
@@ -114,11 +115,6 @@ export default function About() {
           Nunc quis neque tristique, porta ligula ac, lobortis leo.
           Vivamus tincidunt vulputate dignissim. Sed bibendum ante justo, vitae finibus justo pellentesque ut. In gravida magna tristique, dictum augue eget, tristique odio. Duis id placerat enim. Fusce turpis elit, pulvinar vel dapibus sed, elementum ac mauris.
         </p>
-        <p>
-          Cras molestie, nunc ut sollicitudin ultricies, purus leo commodo nunc, vel viverra metus arcu quis dolor.
-          Curabitur lorem arcu, volutpat vitae posuere nec, iaculis quis lacus. Vestibulum in mauris sed turpis posuere ultricies.
-          Suspendisse aliquet odio sit amet mauris euismod mollis. Ut sed odio eu neque blandit maximus a nec felis.
-          </p>
         <br />
         <Button>Узнать Больше</Button>
       </AboutContent>
