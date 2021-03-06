@@ -43,6 +43,9 @@ export default function Layout() {
       <Head>
         <title>Sleeping Forest</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" href="/fonts/Empires.otf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/CaviarDreams.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/fonts/CaviarDreams_Bold.ttf" as="font" crossOrigin="" />
       </Head>
 
       <div className={styles.container}>
