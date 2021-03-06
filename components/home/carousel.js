@@ -1,4 +1,3 @@
-import { useState } from "react";
 import s, { css, keyframes } from 'styled-components';
 import useInterval from '../../hooks/useInterval';
 
@@ -105,17 +104,11 @@ const Selectors = ({ items, active, handleActiveChange }) => {
 
 
 
-export default function Slider({ items }) {
-  const [active, setActive] = useState(0);
-
-
-  const handleActiveChange = (value) => {
-    setActive(value);
-  }
+export default function Slider({ items, active, handleActiveChange }) {
 
   useInterval(() => {
     handleActiveChange(((active + 1) % items.length + items.length) % items.length);
-  }, 5000);
+  }, 10000);
 
 
   return (

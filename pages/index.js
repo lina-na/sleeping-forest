@@ -50,7 +50,7 @@ export default function Layout() {
 
       <div className={styles.container}>
         <canvas width={width} height={height} id="wow"></canvas>
-        <img src="/logo.png" alt="logo" width="320" height="200" style={{ zIndex: 2 }} />
+        <img src="/logo.png" alt="logo" width="320" height="200" style={{ zIndex: 2, pointerEvents: 'none' }} />
       </div>
 
       <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>

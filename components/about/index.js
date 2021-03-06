@@ -11,6 +11,10 @@ const Background = s.div`
   background-size: cover;
 `;
 
+const G = s.span`
+  color: #9ccb3b;
+`;
+
 const WaterflowWrapper = s.div`
   max-width: 40%;
 `;
@@ -31,7 +35,7 @@ const Button = s.button`
 const AboutContent = s.div`
   max-width: 30%;
   margin-right: 50px;
-  align-self: center;
+  margin-top: 10%;
 
   p { 
     margin-bottom: 20px;
@@ -47,8 +51,11 @@ export default function About() {
 
   const particles = (() => {
     const array = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
       array.push({ size: getRandomSize(20, 50), type: TYPE_PARTICLE })
+    }
+    for (let i = 0; i < 5; i++) {
+      array.push({ size: getRandomSize(20, 50), type: TYPE_PARTICLE, color: '#9ccb3ba6' })
     }
     return array;
   })();
@@ -111,6 +118,7 @@ export default function About() {
   return (
     <Background>
       <AboutContent>
+        <h1><G>A</G>bout <G>U</G>s</h1>
         <p>
           Nunc quis neque tristique, porta ligula ac, lobortis leo.
           Vivamus tincidunt vulputate dignissim. Sed bibendum ante justo, vitae finibus justo pellentesque ut. In gravida magna tristique, dictum augue eget, tristique odio. Duis id placerat enim. Fusce turpis elit, pulvinar vel dapibus sed, elementum ac mauris.
@@ -121,8 +129,8 @@ export default function About() {
 
       <WaterflowWrapper>
         <div className="section">
-          {typeof window !== 'undefined' && shuffledArray.map(({ type, size, name, backgroundImage }, index) =>
-            <div style={size && { width: size, height: size }} key={type + index + name || size} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
+          {typeof window !== 'undefined' && shuffledArray.map(({ type, size, name, backgroundImage, color }, index) =>
+            <div style={size && { width: size, height: size, backgroundColor: color }} key={type + index + name || size} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
               {name && <h4>{name}</h4>}
               {backgroundImage && <img src={backgroundImage} alt={name} />}
             </div>)}
