@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import HorizontalScroll from '../components/horizontal-scroll'
 import About from '../components/about'
 import Covers from '../components/covers'
+import Home from '../components/home'
 import Image from 'next/image'
 import s from 'styled-components';
 
@@ -17,7 +18,7 @@ const FooterBackground = s.div`
   bottom: 0;
 `
 
-export default function Home() {
+export default function Layout() {
   useScripts([Wow])
   let width, height;
   useEffect(() => {
@@ -38,23 +39,33 @@ export default function Home() {
         </div>
 
         <div className={styles.container} style={{ backgroundColor: '#B7C39B' }}>
-          Home
-          <FooterBackground  />
+          <Home />
+          <FooterBackground />
         </div>
 
         <div className={styles.container} style={{ backgroundColor: '#37749A' }}>
           <About />
-          <FooterBackground  />
+          <FooterBackground />
         </div>
 
         <div className={styles.container} style={{ backgroundColor: '#815EB6' }}>
           <Covers />
-          <FooterBackground  />
+          <FooterBackground />
         </div>
 
       </HorizontalScroll>
 
-      <div className={styles.footer}>Дождалась от Вовы мокапы. ❤️</div>
+      <div className={styles.footer}>
+        <a href="https://www.youtube.com/channel/UCak_OiOc3G25F1tbOiAV5nA">
+          <img alt="youtube" src="youtube.png" />
+        </a>
+        <a href="https://soundcloud.com/sleepingf0r3st">
+          <img alt="sound-cloud" src="sound-cloud.png" />
+        </a>
+        <a href="https://vk.com/sleepingf0r3st">
+          <img alt="vk" src="vk.png" />
+        </a>
+      </div>
     </div>
   )
 }
