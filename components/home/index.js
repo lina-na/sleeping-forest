@@ -7,7 +7,7 @@ const LeftBarWrapper = s.div`
   left: 0;
   width: 40%;
   background: inherit;
-  height: 100%; 
+  height: 100vh; 
   top: 0;
   overflow: hidden;
 `;
@@ -16,7 +16,7 @@ const LeftBar = s.div`
   position: absolute;
   left: 0;
   width: 40%;
-  height: 100%; 
+  height: 100vh; 
   top: 0;
   z-index: 1;
   display: flex;
