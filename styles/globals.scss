@@ -17,6 +17,14 @@ a {
   box-sizing: border-box;
 }
 
+button { 
+	border: 0;
+	cursor: pointer;
+	&:focus { 
+		outline: none;
+	}
+}
+
 canvas {
   position: absolute;
 
