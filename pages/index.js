@@ -12,7 +12,7 @@ import s from 'styled-components';
 
 const FooterBackground = s.div`
   width: 100vw;
-  height: 100px;
+  height: 80px;
   background-color: black;
   position: absolute;
   bottom: 0;
