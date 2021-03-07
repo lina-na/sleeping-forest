@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/home.module.scss'
 import { useScripts } from '../hooks/useScripts'
 import Wow from '../scripts/wow'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import About from '../components/about'
 import Covers from '../components/covers'
 import Home from '../components/home'
@@ -14,32 +14,66 @@ const FooterBackground = s.div`
   background-color: black;
   position: absolute;
   bottom: 0;
+  z-index: 20;
 `
+const Slider = s.div`
+  position: absolute;
+  right: 50px;
+  cursor: pointer;
+`;
 
 export default function Layout() {
   useScripts([Wow])
   let width, height;
-  useEffect(() => {
-    width = typeof window !== 'undefined' && window.innerWidth
-    height = typeof window !== 'undefined' && window.innerHeight
 
-    function transformScroll(e) {
-      if (!e.deltaY) {
-        return;
-      }
+  const [value, setValue] = useState(0);
 
-      e.currentTarget.scrollLeft += e.deltaY + e.deltaX;
-      e.preventDefault();
-    }
+  const handleRangeChange = ({ target }) => {
+    const container = document.getElementById('page');
 
     const element = document.scrollingElement || document.documentElement;
-    element.addEventListener('wheel', transformScroll);
+    const width = window.innerWidth;
+    setValue(target.value);
 
-    return () => element.removeEventListener('wheel', transformScroll);
+    const position = (target.value * container.offsetWidth / 100) - width;
+    element.scroll({
+      top: 0,
+      left: position > container.offsetWidth ? container.offsetWidth : position,
+    })
+  }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+
+      const transformScroll = (e) => {
+        if (!e.deltaY) return;
+        e.currentTarget.scrollLeft += e.deltaY + e.deltaX;
+        e.preventDefault();
+      }
+
+      const element = document.scrollingElement || document.documentElement;
+      element.addEventListener('wheel', transformScroll);
+
+      width = window.innerWidth
+      height = window.innerHeight
+
+      const container = document.getElementById('page');
+
+      let containerWidth;
+
+      window.onscroll = function () {
+        containerWidth = container.offsetWidth - width;
+        const containerPos = container.getBoundingClientRect();
+        const newValue = (-containerPos.left + width) * 100 / container.offsetWidth;
+        setValue(newValue);
+      };
+
+      return () => element.removeEventListener('wheel', transformScroll);
+    }
   }, [typeof window !== 'undefined' && window]);
 
   return (
-    <div className={styles.page}>
+    <div id="page" className={styles.page}>
       <Head>
         <title>Sleeping Forest</title>
         <link rel="icon" href="/favicon.ico" />
@@ -78,6 +112,10 @@ export default function Layout() {
         <a href="https://vk.com/sleepingf0r3st">
           <img alt="vk" src="vk.png" />
         </a>
+
+        <Slider>
+            <input value={value} onChange={handleRangeChange} type="range" min="25" max="100" id="widget2" step="1" />
+        </Slider>
       </div>
     </div>
   )
