@@ -83,7 +83,7 @@ body {
 
 
 $img_w: 200px; 
-$img_c: 30; 
+$img_c: 35; 
 $img_br: 5px;
 .section {
   width: 100%;
@@ -132,14 +132,11 @@ $img_br: 5px;
 			}
 		}
 	}
-	@keyframes mbt {
-		0%  { transform: translateY(-200px); }
-		100%{ transform: translateY(100vh);  }
-	}
+
   
 	@for $i from 1 through $img_c {
 		.img:nth-child(#{$i}) {
-			left: calc( ( #{$i} - 1 ) * ( 100% - #{$img_w} ) / (#{$img_c} - 1) ) 
+			left: calc( ( #{$i} - 1 ) * ( 100% - #{$img_w} ) / (#{$img_c - 8} - 1) ) 
 		}
 	}
 	.img:nth-child(1) {
@@ -315,6 +312,7 @@ $white: rgba(255,255,255,0.3);
   box-shadow: 10px 10px 60px -8px rgba(0,0,0,0.2);
 	transition: all 0.2s ease;
 	opacity: 1 !important;
+	pointer-events: all;
 }
 
 
@@ -396,3 +394,92 @@ input[type=range]:focus {
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
 }
+
+
+@keyframes mbt {
+	0%  { transform: translateY(100vh); }
+	100%{ transform: translateY(-100vh);  }
+}
+
+
+
+@keyframes mbt1 {
+	0%  { transform: translateY(0); }
+	100%{ transform: translateY(-100vh);  }
+}
+
+
+.masonry-container {
+	width: 80%;
+	margin: auto;
+}
+
+.masonry {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: stretch;
+	width: 100%;
+	margin: auto;
+}
+
+
+
+.column:nth-child(1)  {
+	animation-duration: calc( 12.5s + 12.5s );
+}
+.column:nth-child(2) {
+	animation-duration: calc( 4.5s + 12.5s );
+}
+.column:nth-child(3) {
+	animation-duration: calc( 8.5s + 12.5s );
+}
+.column:nth-child(4) {
+	animation-duration: calc( 2.5s + 12.5s );
+}
+
+
+
+.column {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-content: stretch;
+	flex-grow: 1;
+	justify-content: space-around;
+	height: 200vh;
+	z-index: 1;
+	animation: mbt1 20s linear infinite;
+}
+
+.tile {
+	margin: 4px;
+	img {
+		box-shadow: 0 1px 1px 2px rgba(0,0,0, .15);
+		border-radius: 10px;
+		width: 100%;
+	}
+}
+
+.column div:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+
+  }
+
+.column div { 
+	transition: transform .3s;
+}
+
+.column {  
+    pointer-events: none;
+}
+
+.column div {
+    pointer-events: auto;
+}
+
+.column ~ div:hover {
+    animation-play-state: paused;
+	z-index: 5;
+}   

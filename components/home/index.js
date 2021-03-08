@@ -75,10 +75,10 @@ const items = [{
   ),
   background: 'bg.png'
 }, {
-  content: (<p>Йо Вова соска.</p>),
+  content: (<p>Топ кек</p>),
   background: 'BG_01.jpg'
 }, {
-  content: (<p> Воспользуюсь моментом и передам привет жене.</p>),
+  content: (<p>Какой-нибудь текст</p>),
   background: 'BG_02.jpg'
 }]
 

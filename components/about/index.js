@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import s from 'styled-components';
+import { Masonry, Tile } from './masonry';
 
 const Background = s.div`
   background-image: url("cover.jpg");
@@ -16,7 +17,10 @@ const G = s.span`
 `;
 
 const WaterflowWrapper = s.div`
-  max-width: 40%;
+  max-width: 120%;
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
 `;
 
 const Button = s.button`
@@ -51,10 +55,10 @@ export default function About() {
 
   const particles = (() => {
     const array = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 25; i++) {
       array.push({ size: getRandomSize(20, 50), type: TYPE_PARTICLE })
     }
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       array.push({ size: getRandomSize(20, 50), type: TYPE_PARTICLE, color: '#9ccb3ba6' })
     }
     return array;
@@ -113,7 +117,16 @@ export default function About() {
     return array;
   }
 
-  const shuffledArray = useMemo(() => shuffleArray([...particles, ...cards]), []);
+  const shuffledArray = useMemo(() => shuffleArray([...particles]), []);
+
+  let brakePoints = [350, 500, 750];
+  let images = [];
+  const imgId = [1011, 883, 1074, 823, 64, 65, 839, 314, 256, 316, 92, 643];
+  for (let i = 0; i < imgId.length; i++) {
+    const ih = 200 + Math.floor(Math.random() * 10) * 15;
+    images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
+  }
+
 
   return (
     <Background>
@@ -127,15 +140,28 @@ export default function About() {
         <Button>Узнать Больше</Button>
       </AboutContent>
 
-      <WaterflowWrapper>
-        <div className="section">
-          {typeof window !== 'undefined' && shuffledArray.map(({ type, size, name, backgroundImage, color }, index) =>
-            <div style={size && { width: size, height: size, backgroundColor: color }} key={type + index + name || size} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
-              {name && <h4>{name}</h4>}
-              {backgroundImage && <img src={backgroundImage} alt={name} />}
-            </div>)}
+
+      <div style={{ display: 'flex', width: '40%', position: 'relative', overflow: 'hidden', justifyContent: 'space-evenly' }}>
+        <WaterflowWrapper>
+          <div className="section">
+            {typeof window !== 'undefined' && shuffledArray.map(({ type, size, name, backgroundImage, color }, index) =>
+              <div style={size && { width: size, height: size, backgroundColor: color }} key={type + index + name || size} className={type === TYPE_IMAGE ? "img" : 'particle img'}>
+                {name && <h4>{name}</h4>}
+                {backgroundImage && <img src={backgroundImage} alt={name} />}
+              </div>)}
+          </div>
+        </WaterflowWrapper>
+
+        <div className="masonry-container">
+          <Masonry brakePoints={brakePoints}>
+            {cards.map((image, id) => {
+              return (
+                <Tile key={id} src={image.backgroundImage} />
+              )
+            })}
+          </Masonry>
         </div>
-      </WaterflowWrapper>
+      </div>
     </Background>
   )
 }
