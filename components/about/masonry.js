@@ -1,73 +1,69 @@
 
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 
 export const Tile = ({ src }) => {
     return (
-        <div className="tile">
-            <img src={src} />
-        </div>
+        <div className="tile" style={{ backgroundImage: `url("${src}")`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: 5 }}></div>
     );
 };
 
-export class Masonry extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { columns: 1 };
-        this.onResize = this.onResize.bind(this);
-    }
-    componentDidMount() {
-        this.onResize();
-        window.addEventListener('resize', this.onResize)
-    }
+export const Masonry = ({ brakePoints, children }) => {
+    const [columns, setColumns] = useState(1);
+    const ref = useRef();
+    useEffect(() => {
+        onResize();
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize)
+    }, [])
 
-    getColumns(w) {
-        return this.props.brakePoints.reduceRight((p, c, i) => {
+
+    const getColumns = (w) => {
+        return brakePoints.reduceRight((p, c, i) => {
             return c < w ? p : i;
-        }, this.props.brakePoints.length) + 1;
+        }, brakePoints.length) + 1;
     }
 
-    onResize() {
-        const columns = this.getColumns(this.refs.Masonry.offsetWidth);
-        if (columns !== this.state.columns) {
-            this.setState({ columns: columns });
+    const onResize = () => {
+        const cols = getColumns(ref.current.offsetWidth);
+        if (cols !== columns) {
+            setColumns(cols)
         }
 
     }
 
-    mapChildren() {
+    const mapChildren = () => {
         let col = [];
-        const numC = this.state.columns;
+        const numC = columns;
         for (let i = 0; i < numC; i++) {
             col.push([]);
         }
-        return this.props.children.reduce((p, c, i) => {
+        return children.reduce((p, c, i) => {
             p[i % numC].push(c);
             return p;
         }, col);
     }
 
-    render() {
-        return (
-            <div className="masonry" ref="Masonry">
-                <div className="column"  ><div></div></div>
-                {this.mapChildren().map((col, ci) => {
-                    return (
-                        <div className="column" key={ci} >
 
-                            {col.map((child, i) => {
-                                return <div key={i} >{child}</div>
-                            })}
+    return (
+        <div className="masonry" ref={ref}>
+            {mapChildren().map((col, ci) => {
+                return (
+                    <div className="column" key={ci} >
 
-                            {col.map((child, i) => {
-                                return <div key={i + 'kek'}>{child}</div>
-                            })}
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
+                        {col.map((child, i) => {
+                            return <div key={i} >{child}</div>
+                        })}
+
+                        {col.map((child, i) => {
+                            return <div key={i + 'shadow'}>{child}</div>
+                        })}
+                    </div>
+                )
+            })}
+        </div>
+    )
+
 }
 
 
