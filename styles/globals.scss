@@ -328,15 +328,15 @@ $white: rgba(255,255,255,0.3);
   position: relative;
   width: 50%;
 	margin-bottom: 150px;
-	top: -50vh;
+	top: -40vh;
   &:after {
     content: "";
     display: block;
     padding-bottom: 100%;
   }
   .slide__container {
+    z-index: 2;
     position: absolute;
-    background: rgba(green, 0.3);
     border-radius: 50%;
     width: 100%;
     height: 100%;
@@ -348,12 +348,12 @@ $white: rgba(255,255,255,0.3);
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: rgba(red, 0.5);
       display: flex;
       justify-content: center;
       align-items: center;
       transform: translate(-50%, 50%);
       transition: all 0.5s ease-in-out;
+	  z-index: 10;
     }
     &.slide--active {
       .slide {
@@ -483,3 +483,232 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     animation-play-state: paused;
 	z-index: 5;
 }   
+
+#vinyl {
+	z-index: 1;
+	display: block;
+	background-image: url('https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Music-PNG/Gramophone_Vinyl_LP_Record_PNG_Transparent_Clip_Art_Image.png?m=1462983196');
+	background-size: 106% 106%;
+	background-position: center;
+	box-shadow: 0 0 20px 4px rgba(0,0,0,0.6);
+	border-radius: 50%;
+	content: '';
+	animation: 5s linear spinThat infinite, 1s ease-out getOut 1s forwards;
+	&::before {
+		position: absolute;
+		top: 2.5%;
+		left: 2.5%;
+		z-index: 10;
+		width: 95%;
+		height: 95%;
+		background-image: url('http://www.designresourcebox.com/ths/diverse/blacktextures/82267467.jpg');
+		background-size: 100% 100%;
+		border-radius: 50%;
+		mix-blend-mode: screen;
+		opacity: 0.3;
+		content: '';
+	}
+	#print {
+		position: absolute;
+		top: 33%;
+		left: 33%;
+		height: 34%;
+		width: 34%;
+		box-shadow: inset 0 0 0 5px rgba(150,150,150,0.5);
+		background-image: url('http://assets.teamrock.com/image/14d29742-c6f7-43f6-bbe1-6bf7b3b34c6f?w=800');
+background-size: cover;
+		border-radius: 50%;
+	}
+}
+
+
+
+$baseline: 1.5rem;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+.player {
+  background: rgba(209, 55, 65, 1.0) url(http://piers.io/codepen/music-player/bg.jpg) fixed center / cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.player__title {
+  font-size: 2em;
+  color: white;
+  margin-bottom: $baseline * 5;
+}
+
+.player__wave {
+  position: absolute;
+  top: calc(50% + #{$baseline * 2.5});
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.player__items {
+  max-width: 73.75rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.audio-bubble {
+  width: 15%;
+  margin: 0;
+  min-width: 8rem;
+}
+
+.audio-bubble__button {
+  .audio-bubble--active & {
+    transform: scale(2);
+  }
+  // .audio-bubble:not(.audio-bubble--active) &:hover {
+  //   transform: scale(1.05);
+  // }
+}
+
+$font: "Work Sans", sans-serif;
+$bg: darkseagreen;
+$margin: 4%;
+$duration: 2s;
+
+
+$vinyl: 100%;
+$inner: $vinyl / 3;
+$label: $vinyl / 1.5;
+$title: $vinyl / 1.5;
+$hole: $vinyl / 10;
+@mixin circle { border-radius: 50%; }
+#vinyl,
+#inner,
+#label,
+#hole { @include circle; }
+
+#vinyl { 
+	position: absolute;
+	display: block;
+	margin: 0 auto;
+	// width: $vinyl;
+	// height: $vinyl;
+	border: 5px solid black;
+  background: repeating-radial-gradient(
+  	circle,
+  	lighten(black, 10%),
+  	lighten(black, 10%) 1px,
+  	black 1px, 
+  	black 4px
+	); }
+
+	#inner {
+		position: absolute;
+		top: (100% - $inner) / 2;
+		left: (100% - $inner) / 2;
+		width: $inner;
+		height: $inner;
+		background: black; }
+	
+	#label {
+		position: relative;
+		top: (100% - $label) / 2;
+		left: (100% - $label) / 2;
+		width: $label;
+		height: $label;
+		padding: 0.5rem;
+		background: tomato; 
+		color: white; 
+		text-align: center; }
+	
+	#hole {
+		position: relative;
+		top: (100% - $hole) / 2;
+		left: (100% - $hole) / 2;
+		width: $hole;
+		height: $hole;
+		background: $bg; 
+		z-index: 100; }
+
+.audio-bubble__button {
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: black;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 0;
+  border-radius: 50%;
+  padding: 0;
+  padding: 0;
+  position: relative;
+  margin-bottom: $baseline;
+}
+
+.audio-bubble__image {
+  border-radius: 50%;
+  transition: opacity .4s ease;
+  .audio-bubble:not(.audio-bubble--active):hover & {
+    opacity: .75;
+  }
+}
+
+.audio-bubble__meta {
+  color: white;
+  text-align: center;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  .audio-bubble--active & {
+    transform: translateY($baseline * 3);
+  }
+}
+
+.audio-bubble__progress {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  transform: rotate(-90deg);
+  circle {
+    stroke: rgba(250, 210, 88, 1.0);
+    stroke-dasharray: 608;
+  }
+  .audio-bubble:not(.audio-bubble--active) & {
+    opacity: 0;
+  }
+}
+
+.audio-bubble__play,
+.audio-bubble__pause {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.audio-bubble__play {
+  width: 17.5%;
+}
+
+.audio-bubble__pause {
+  width: 12%;
+}
+
+.audio-bubble__title {
+  font-weight: bold;
+  margin-bottom: $baseline/4;
+}
+
+.audio-bubble__subtitle {
+  font-size: .875em;
+}
